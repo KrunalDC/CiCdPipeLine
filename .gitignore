@@ -1,0 +1,29 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore virtual environment directory
+mytestenv/
+
+# Ignore environment variable files
+.env
+
+# Ignore any logs or temp files
+*.log
+*.tmp
+
+# Ignore the compiled Python files
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore system-specific files
+.DS_Store
+
+# Ignore Python egg files
+*.egg
+*.egg-info
+dist/
+build/
