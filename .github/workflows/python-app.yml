@@ -38,12 +38,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Install Render CLI
+    - uses: johnbeynon/render-deploy-action@v0.0.8
+    - name: Deploy to production
       run: |
         curl -fsSL https://render.com/static/cli/install.sh | bash
     - name: Deploy to Render
       env:
-        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        service-id: ${{ secrets.SERVICE_ID }} # Can be found as part of the Deploy Hook
+        api-key: ${{ secrets.RENDER_API_KEY }} # Create your API key in Render Dashboard > Account Settings
       run: |
         render deploy
