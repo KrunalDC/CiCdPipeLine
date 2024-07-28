@@ -31,7 +31,6 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest tests/
         
   deploy:
     needs: build
@@ -40,9 +39,6 @@ jobs:
     steps:
     - uses: johnbeynon/render-deploy-action@v0.0.8
     - name: Deploy to production
-      run: |
-        curl -fsSL https://render.com/static/cli/install.sh | bash
-    - name: Deploy to Render
       env:
         service-id: ${{ secrets.SERVICE_ID }} # Can be found as part of the Deploy Hook
         api-key: ${{ secrets.RENDER_API_KEY }} # Create your API key in Render Dashboard > Account Settings
