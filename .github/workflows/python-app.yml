@@ -38,3 +38,16 @@ jobs:
       run: 
         pip install pytest
         pytest
+
+  deploy: 
+    name: deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4 
+    - name: Deploy to production
+    - uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        sercive-id: ${{ secrets.SERVICE_ID}}
+        api-key: ${{ secrets.RENDER_API_KEY}}
