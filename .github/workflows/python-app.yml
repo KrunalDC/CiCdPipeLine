@@ -38,8 +38,5 @@ jobs:
 
     steps:
     - name: Deploy to Render
-      env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          SERVICE_ID: ${{ secrets.SERVICE_ID }}
       run: |
-          curl -X POST "https://api.render.com/deploy/${{ secrets.SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}"
+        curl -X POST "https://api.render.com/deploy/srv-cqja25uehbks73c8lfug?key=w1Z2AT7pc-U"
