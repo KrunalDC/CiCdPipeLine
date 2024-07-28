@@ -37,10 +37,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: johnbeynon/render-deploy-action@v0.0.8
-    - name: Deploy to production
+    - name: Deploy to Render
       env:
-        service-id: ${{ secrets.SERVICE_ID }} # Can be found as part of the Deploy Hook
-        api-key: ${{ secrets.RENDER_API_KEY }} # Create your API key in Render Dashboard > Account Settings
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
       run: |
-        render deploy
+          curl -X POST \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"serviceId": "$RENDER_SERVICE_ID"}' \
+            https://api.render.com/v1/services/restart
